@@ -13,7 +13,7 @@ public class homework4 {
     private static int fieldSizeX;
     private static int fieldSizeY;
     private static String playerOnename="";
-    private static int v;//   победа при размерности ( разм 3 <----> v = 3) (разм 5 <-----> v=4
+    private static int v;
     private static int n;
     private static  int attackCount=0;
     private static  int attackMaxCount=0;
@@ -35,7 +35,6 @@ public class homework4 {
             fieldSizeX=n;
             fieldSizeY=n;
             if (n==3) v=3;
-
             else v=n-1;
 
             initField();
@@ -158,7 +157,7 @@ return false;
                 for (int j = 0; j < n; j++) {
                     if(isPreWin) break;
 
-                    if (field[i][j] == DOT_AI || field[i][j] == DOT_EMPTY) {//&&!isPreWin
+                    if (field[i][j] == DOT_AI || field[i][j] == DOT_EMPTY) {
 
                         rezf=checkDiagonalLineForPreWinSituation(DOT_AI,i,j);
                         if (rezf!=null) {
@@ -190,16 +189,9 @@ return false;
                             y=rezf[1];
                             isPreWin=true;
                         }
-
-
                     }
-
-
                 }
             }
-
-
-
 
         //проверка на предвыйгрышную ситуацию у соперника
 
@@ -240,19 +232,17 @@ return false;
                             isPreWin = true;
                         }
 
-//
-
-
                     }
                 }
-
 
             }
         }
 
-        if (!isPreWin) {//!danger&&
-            // когда нет ситуаций для защиты...нужно идти в атаку
+        if (!isPreWin) {
+
             //ищем ячейку которая включена в наибольшее кол-во линий размером в v в которых нет DOT_HUMAN
+            //это большее что за неделю я придумал (лучше чем случайный выбор клетки)
+
             for (int i = 0; i < n; i++) {
                 for (int j = 0; j < n; j++) {attackCount=0;
                     if (field[i][j] == DOT_AI || field[i][j] == DOT_EMPTY) {
@@ -283,10 +273,6 @@ return false;
 
                 }
             }
-
-
-
-
 //        do {
 //
 //                x = RANDOM.nextInt(fieldSizeX);
